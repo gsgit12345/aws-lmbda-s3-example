@@ -13,6 +13,7 @@ import com.amazonaws.services.s3.model.S3Object;
 import com.amazonaws.services.s3.model.S3ObjectInputStream;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
@@ -21,18 +22,19 @@ import java.io.File;
 
 @Slf4j
 @RequiredArgsConstructor
-
 public class LambdaRequestHandler implements RequestHandler<S3Event,String> {
-   private static final  String DESTINATION_BUCKET="ghanshyam-delhi-demo";
-    private final DemoConfig demoConfig;
+   private static final  String DESTINATION_BUCKET="ghanshyam-delhi";
+
+    private  final   DemoConfig demoConfig;
 
     private AmazonS3 amazonS3;
 
 
     @Override
     public String handleRequest(S3Event s3Event, Context context) {
-        BasicAWSCredentials awsCreds = new BasicAWSCredentials(demoConfig.getAccessid(), demoConfig.getSecretkey());
 
+       BasicAWSCredentials awsCreds = new BasicAWSCredentials(demoConfig.getAccessid(), demoConfig.getSecretkey());//add the access and secret key in code
+//working demo
         amazonS3 = AmazonS3ClientBuilder.standard()
                 .withCredentials(new AWSStaticCredentialsProvider(awsCreds))
                 .withRegion(Regions.AP_SOUTH_1)
