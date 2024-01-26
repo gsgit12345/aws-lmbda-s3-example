@@ -8,10 +8,10 @@
     </parent>
 
     <groupId>com.example.aws</groupId>
-    <artifactId>demo-project-aws-lambda</artifactId>
+    <artifactId>demo-project-s3-with-lambda</artifactId>
     <packaging>jar</packaging>
 
-    <name>demo-project-aws-lambda</name>
+    <name>demo-project-s3-with-lambda</name>
     <url>http://maven.apache.org</url>
 
     <properties>
@@ -21,9 +21,28 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <lombook.version>1.18.24</lombook.version>
+        <spring-cloud.version>2023.0.0</spring-cloud.version>
 
     </properties>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-function-adapter-aws</artifactId>
+            <version>4.0.4</version>
+        </dependency>
+
         <!-- https://mvnrepository.com/artifact/software.amazon.awssdk/lambda -->
         <dependency>
             <groupId>software.amazon.awssdk</groupId>
@@ -129,6 +148,18 @@
                     <createDependencyReducedPom>false</createDependencyReducedPom>
                     <shadedArtifactAttached>true</shadedArtifactAttached>
                     <shadedClassifierName>aws</shadedClassifierName>
+                    <transformers>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                            <resource>META-INF/spring.handlers</resource>
+                        </transformer>
+                        <transformer implementation="org.springframework.boot.maven.PropertiesMergingResourceTransformer">
+                            <resource>META-INF/spring.factories</resource>
+                        </transformer>
+                        <transformer implementation="org.apache.maven.plugins.shade.resource.AppendingTransformer">
+                            <resource>META-INF/spring.schemas</resource>
+                        </transformer>
+                    </transformers>
+
                 </configuration>
             </plugin>
             <plugin>

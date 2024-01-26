@@ -5,6 +5,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>demo-project-aws-lambda</module>
+        <module>demo-project-s3-with-lambda</module>
     </modules>
 
     <parent>
