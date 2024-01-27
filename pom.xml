@@ -7,6 +7,7 @@
         <module>demo-project-aws-lambda</module>
         <module>demo-project-s3-with-lambda</module>
         <module>demo-project-aws-ec2-sqs-s3-example</module>
+        <module>demo-project-awssns-demo</module>
     </modules>
 
     <parent>

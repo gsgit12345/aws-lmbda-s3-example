@@ -1,0 +1,10 @@
+
+https://codezup.com/aws-simple-notification-servicesns-using-spring-boot/
+https://www.youtube.com/watch?v=M3HwfKwDRVU&list=PLLeJtf87cXRvWqf1Wn2WLndyqtQ5BSHec&index=9
+
+1-create user and provide the permission to the aws sns
+1-Create topic
+ open postman and push notification
+
+ http://localhost:8080/sendNotification
+http://localhost:8080/addSubscription

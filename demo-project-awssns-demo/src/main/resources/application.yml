@@ -1,0 +1,10 @@
+cloud:
+  aws:
+    region:
+      static: ap-south-1
+      auto: false
+    credentials:
+      access-key: secretkey
+      secret-key: access key+X
+    server:
+      port: 8080
