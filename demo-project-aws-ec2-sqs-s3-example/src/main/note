@@ -1,0 +1,14 @@
+1-create springboot project
+2-create ec2 infrastructure
+3-create s3 bucket
+4-create sqs queue
+5-send message to queue
+6-upload jar to s3
+7-get jar from s3
+8-run jar to ec2
+
+sudo yum install java-17-amazon-corretto
+aws s3 ls
+aws s3 ls
+[ec2-user@ip-172-31-42-0 app]$ aws s3 cp s3://ec2-s3-sq-demo/demo-project-aws-ec2-sqs-s3-example-0.0.1-SNAPSHOT.jar .    --for copy the file from s3 to ec2 instance
+curl -X GET http://localhost:8080/send/hello demo message
