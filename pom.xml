@@ -9,6 +9,7 @@
         <module>demo-project-aws-ec2-sqs-s3-example</module>
         <module>demo-project-awssns-demo</module>
         <module>demo-project-jms-sqs-example</module>
+        <module>demo-project-aws-dynadb-example</module>
     </modules>
 
     <parent>
