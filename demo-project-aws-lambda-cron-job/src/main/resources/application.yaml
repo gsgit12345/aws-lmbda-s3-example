@@ -1,0 +1,12 @@
+service: spring-boot-cron-job
+
+provider:
+  name: aws
+  runtime: java11
+
+functions:
+  cronJob:
+    handler: com.aws.demo.CronJobHandler
+    events:
+      - schedule:
+          rate: cron(0 12 * * ? *)  # This runs every day at 12 PM UTC
